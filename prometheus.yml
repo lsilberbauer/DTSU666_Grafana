@@ -1,5 +1,5 @@
 global:
-  scrape_interval: 5s # when Prometheus is pulling data from exporters etc
+  scrape_interval: 15s # when Prometheus is pulling data from exporters etc
   evaluation_interval: 30s # time between each evaluation of Prometheus' alerting rules
 
 scrape_configs:
