@@ -31,9 +31,9 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "zM4p5mA4k"
+        "uid": "L-MH0m0Vk"
       },
-      "description": "Watt",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -62,8 +62,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 5,
+        "w": 6,
         "x": 0,
         "y": 0
       },
@@ -89,6 +89,7 @@
           },
           "editorMode": "builder",
           "expr": "pt",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -100,7 +101,246 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "zM4p5mA4k"
+        "uid": "L-MH0m0Vk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "L-MH0m0Vk"
+          },
+          "editorMode": "builder",
+          "expr": "errors_total",
+          "legendFormat": "Errors",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "L-MH0m0Vk"
+          },
+          "editorMode": "builder",
+          "expr": "queries_total",
+          "hide": false,
+          "legendFormat": "Queries",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Smart Meter Query Statistik",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "L-MH0m0Vk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd",
+            "seriesBy": "min"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "watt"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "L-MH0m0Vk"
+          },
+          "editorMode": "builder",
+          "expr": "pt",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Stromverbrauch aktuell",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "L-MH0m0Vk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "hertz"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      "id": 12,
+      "options": {
+        "bucketOffset": 0,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "L-MH0m0Vk"
+          },
+          "editorMode": "builder",
+          "expr": "f",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Netzfrequenz",
+      "type": "histogram"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "L-MH0m0Vk"
       },
       "fieldConfig": {
         "defaults": {
@@ -155,10 +395,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 0
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 5
       },
       "id": 6,
       "options": {
@@ -183,6 +423,7 @@
           "editorMode": "builder",
           "exemplar": true,
           "expr": "ua",
+          "hide": false,
           "legendFormat": "UA",
           "range": true,
           "refId": "A"
@@ -223,106 +464,12 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "zM4p5mA4k"
+        "uid": "L-MH0m0Vk"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "hertz"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 9
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "zM4p5mA4k"
-          },
-          "editorMode": "builder",
-          "exemplar": false,
-          "expr": "f",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Netzfrequenz",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "zM4p5mA4k"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
+            "mode": "continuous-GrYlRd"
           },
           "custom": {
             "axisCenteredZero": false,
@@ -363,10 +510,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 9
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 10
       },
       "id": 8,
       "interval": "1h",
@@ -374,6 +521,7 @@
       "options": {
         "barRadius": 0,
         "barWidth": 0.97,
+        "colorByField": "Value",
         "groupWidth": 0.7,
         "legend": {
           "calcs": [],
@@ -392,20 +540,27 @@
         "xTickLabelRotation": 0,
         "xTickLabelSpacing": 0
       },
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "zM4p5mA4k"
+            "uid": "L-MH0m0Vk"
           },
           "editorMode": "builder",
-          "expr": "increase(impep[$__rate_interval])",
+          "exemplar": false,
+          "expr": "increase(impep[1h])",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Stromverbrauch",
+      "timeFrom": "24h",
+      "title": "Stromverbrauch Tag",
       "transformations": [],
       "type": "barchart"
     }
@@ -417,7 +572,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
