@@ -15,6 +15,7 @@ F = Gauge('f', 'Frequency [Hz]')
 IMP = Gauge('impep', 'Imported Power [kWh]')
 EXP = Gauge('expep', 'Exported Power [kWh]')
 ERR = Counter('errors', 'Python Exceptions')
+QRS = Counter('queries', 'Queries performed')
 
 client = ModbusTcpClient('waveshare-58a4', 8899)
 
@@ -32,22 +33,27 @@ if __name__ == "__main__":
     start_http_server(8080)
     client.connect()
 
+    print("Started polling loop")
+
     try:
         while True:
-            print("polling...")
+            try:
+                UA.set(get_smart_meter_value(0x2006) * 0.1)
+                UB.set(get_smart_meter_value(0x2008) * 0.1)
+                UC.set(get_smart_meter_value(0x200A) * 0.1)
+                IA.set(get_smart_meter_value(0x200C) * 0.001)
+                IB.set(get_smart_meter_value(0x200E) * 0.001)
+                IC.set(get_smart_meter_value(0x2010) * 0.001)
+                PT.set(get_smart_meter_value(0x2012) * 0.1)
+                F.set(get_smart_meter_value(0x2044) * 0.01)
+                IMP.set(get_smart_meter_value(0x101E))
+                EXP.set(get_smart_meter_value(0x1028))
+                QRS.inc()
 
-            UA.set(get_smart_meter_value(0x2006) * 0.1)
-            UB.set(get_smart_meter_value(0x2008) * 0.1)
-            UC.set(get_smart_meter_value(0x200A) * 0.1)
-            IA.set(get_smart_meter_value(0x200C) * 0.001)
-            IB.set(get_smart_meter_value(0x200E) * 0.001)
-            IC.set(get_smart_meter_value(0x2010) * 0.001)
-            PT.set(get_smart_meter_value(0x2012) * 0.1)
-            F.set(get_smart_meter_value(0x2044) * 0.01)
-            IMP.set(get_smart_meter_value(0x101E))
-            EXP.set(get_smart_meter_value(0x1028))
-
-            time.sleep(15)
+                time.sleep(15)
+            except Exception as e:
+                ERR.inc()
+                print(e)
 
     except KeyboardInterrupt as ex:
         client.close()
